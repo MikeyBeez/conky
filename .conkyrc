@@ -82,7 +82,7 @@ ${offset 10}CPU1: ${alignc}${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
 ${offset 10}CPU2: ${alignc}${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
 ${offset 10}CPU3: ${alignc}${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
 ${offset 10}CPU4: ${alignc}${cpu cpu4}% ${alignr}${cpubar cpu4 8,60}
-${offset 20}${color1}Process:${color}${if_match ${top cpu 1}>10}${color #960000}警告：有进程正占用大量处理器资源${color}${endif}${hr 1}$color0
+${offset 20}${color1}Process:${color1}${if_match ${top cpu 1}>10}${color #960000}CPU资源被大量占用${color}${endif}${hr 1}$color0
 ${offset 20}Name${alignr}CPU%${offset 20}
 ${offset 20}${top name 1}${alignr}${top cpu 1}%${offset 20}
 ${offset 20}${top name 2}${alignr}${top cpu 2}%${offset 20} 
