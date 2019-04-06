@@ -27,4 +27,4 @@ So please change them by your self.
 |.conkyrc|https://github.com/zjuyk/conky/.conkrc|
 |images|https://github.com/zjuyk/conky/images/|
 ## Archived
-![](https://github.com/zjuyk/conky/images/archived.png)
+![](./images/archived.png)
