@@ -1,0 +1,102 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Author: Kun Yang
+Conky version 1.10.8
+04/07/2019
+Inspired in: + Conkyrc by Grey
+             + Conky docs
+]]
+
+conky.config = {
+-- --------------------------Window
+	own_window = true,
+	own_window_class = 'conky',
+	own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_argb_value = 120,
+
+	background = false,
+	double_buffer = true,
+-- --------------------------Position		
+	alignment = 'top_right',
+
+	gap_x = 5,
+	gap_y = 50,
+
+	minimum_height = 5,
+	minimum_width = 5,
+-- --------------------------Front
+	draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,  
+
+	font = 'wqy:size=12',
+	
+	uppercase = false,
+	use_spacer = 'none',
+
+	text_buffer_size = 2048,
+	use_xft = true,
+	override_utf8_locale = true,
+-- --------------------------Other
+	no_buffers = true,
+	out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+	
+	stippled_borders = 0,
+    update_interval = 1.0,
+
+	imlib_cache_size = 0,
+
+	color0 = 'FFFFFF',
+	color1 = 'FFF68F',
+	color2 = 'EEB422',
+
+	lua_load = '$HOME/.conky/scripts/clock.lua',
+}
+
+conky.text = [[
+${offset 50}$alignc${lua conky_imlib_clock white 200 150 100}
+
+${voffset 150}
+${offset 10}$color1${font size=20}Weather${hr 2}$color0
+
+${execi 1000 curl -s "https://www.tianqiapi.com/api/?version=v6&ip" -o ~/.cache/weather.json}\
+\
+${voffset 7}${offset 100}${font bold:size=16}${execi 1000 grep -o "\"city\":\"[^\"]*\"" ~/.cache/weather.json | grep -o ":\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ascii2uni -a U -q}, \
+\
+${execi 1000 grep -o "\"country\":\"[^\"]*\"" ~/.cache/weather.json | grep -o ":\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ascii2uni -a U -q}\
+\
+${image $HOME/.conky/images/weather/map-marker.png -p 70,280 -s 32x30}
+${offset 30}${font size=16}天气:$alignr${execi 1000 grep -o "\"wea\":\"[^\"]*\"" ~/.cache/weather.json | grep -o ":\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ascii2uni -a U -q}${offset 180}
+${offset 30}${font size=16}温度:$alignr${execi 1000 grep -o "\"tem\":\"[^\"]*\"" ~/.cache/weather.json | grep -o ":\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ascii2uni -a U -q}℃${offset 180}
+
+${offset 10}$color1${font size=20}Disk${hr 2}$color0${offset 20}
+
+${offset 30}读取速度：$alignr${diskio_read}/s${offset 20}
+${offset 30}写入速度：$alignr${diskio_write}/s${offset 20}
+${offset 30}磁盘空间：$alignr${voffset 3}${fs_bar 8,100 /}${offset 20}
+
+${offset 10}$color1${font size=20}Battery${hr 2}$color0${offset 20}
+
+${offset 30}状态：$alignr${battery BAT0}${offset 20}
+${offset 30}电量：$alignr${battery_percent}%${offset 20}
+${offset 30}时长：$alignr${battery_time BAT0}${offset 20}
+
+${offset 10}$color1${font size=20}Motto${hr 2}$color0${offset 20}
+
+${image $HOME/.conky/images/motto.png -p 80,790 -s 160x40}
+${image $HOME/.conky/images/logo1.png -p 30,870 -s 240x65}
+${voffset 200}
+]]
+
+--[[
+${offset 50}$alignc${image $HOME/.conky/images/wind-chime/line1.png -p 120,200 -s 80x150}${offset 250}
+${offset 50}$alignc${image $HOME/.conky/images/wind-chime/demo.png -p 120,335 -s 80x220}${offset 250}
+${voffset 220}
+]]
