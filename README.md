@@ -29,4 +29,4 @@ So please change them by your self. Maybe I'll finish them later.
 |.conkyrc_l|https://github.com/zjuyk/conky/.conkrc_l|
 |.conkyrc_r|https://github.com/zjuyk/conky/.conkyrc_r|
 ## Archived
-![](https://s2.ax1x.com/2019/04/06/AfKlsf.png)
+![](https://s2.ax1x.com/2019/04/13/ALbwbd.png)
