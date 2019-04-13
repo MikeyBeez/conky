@@ -1,1 +1,1 @@
-The photo needed.
+The assets needed.
